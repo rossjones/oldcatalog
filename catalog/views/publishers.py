@@ -17,11 +17,7 @@ from catalog.search_forms import PublisherSearchForm
 def list(request):
     form = PublisherSearchForm(request.GET or None)
 
-    query = ''
-    if form.is_valid():
-        query = form.cleaned_data['q']
-
-    search_results = SearchQuerySet().filter(content=query)
+    search_results = form.search()
 
     page = request.GET.get('page')
     paginator = Paginator(search_results, 1)

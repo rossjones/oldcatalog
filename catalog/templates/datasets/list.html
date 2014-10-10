@@ -6,7 +6,44 @@
 {% block content %}
 
 <div class="row-fluid">
-Datasets
+
+
+<form action="." method="GET">
+    {{ form }}
+    <button class="btn btn-primary">Search</button>
+</form>
+
+
+{% if total == 0 %}
+    <h3>No datasets found</h3>
+{% else %}
+    <h2>Found {{ total }} datasets </h2>
+
+{{ datasets.count }}
+    <ul class="search-results">
+        {% for result in datasets %}
+            {% include "datasets/search_result.html" %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if datasets.has_previous %}
+            <a href="?page={{ datasets.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ datasets.number }} of {{ datasets.paginator.num_pages }}.
+        </span>
+
+        {% if datasets.has_next %}
+            <a href="?page={{ datasets.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
 </div>
 
 {% endblock content %}
