@@ -9,8 +9,9 @@ admin.autodiscover()
 
 from rest_framework import routers
 router = routers.DefaultRouter()
-router.register(r'users', api_views.UserViewSet)
-router.register(r'groups', api_views.GroupViewSet)
+router.register(r'datasets', api_views.DatasetViewSet)
+router.register(r'publishers', api_views.PublisherViewSet)
+router.register(r'resources', api_views.ResourceViewSet)
 
 urlpatterns = patterns('',
     # Examples:

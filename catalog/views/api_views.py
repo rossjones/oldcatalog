@@ -1,19 +1,26 @@
-from django.contrib.auth.models import User, Group
+
 from rest_framework import viewsets
-from catalog.serializers import UserSerializer, GroupSerializer
+from catalog.serializers import (PublisherSerializer, DatasetSerializer, ResourceSerializer)
+from catalog.models import (Publisher, Dataset, Resource)
+
+class DatasetViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows datasets to be viewed or edited.
+    """
+    queryset = Dataset.objects.all()
+    serializer_class = DatasetSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class PublisherViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows publishers to be viewed or edited.
     """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
 
-
-class GroupViewSet(viewsets.ModelViewSet):
+class ResourceViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows groups to be resources
     """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = Resource.objects.all()
+    serializer_class = ResourceSerializer
