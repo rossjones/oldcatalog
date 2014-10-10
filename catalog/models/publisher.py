@@ -7,9 +7,11 @@ from autoslug import AutoSlugField
 class Publisher(models.Model):
 
     title = models.CharField(max_length=200)
-    slug = AutoSlugField(populate_from='title',
-        slugify=lambda value: value.replace(' ','-'))
+    slug = AutoSlugField(populate_from='title')
     description = models.TextField()
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.title

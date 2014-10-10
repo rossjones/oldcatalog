@@ -15,6 +15,8 @@ urlpatterns = patterns('',
 
 
     url(r'^(?P<slug>[\w-]+)$', 'catalog.views.publishers.show', name='publisher_show'),
+    url(r'^(?P<publisher_slug>[\w-]+)/(?P<slug>[\w-]+)$',
+            'catalog.views.datasets.show', name='dataset_show'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

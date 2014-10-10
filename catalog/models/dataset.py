@@ -10,10 +10,18 @@ class Dataset(models.Model):
 
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title',
-        slugify=lambda value: value.replace(' ','-'))
+        unique_with=['publisher__slug'],)
     description = models.TextField()
 
-    publisher = models.ForeignKey(Publisher)
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_date = models.DateTimeField(auto_now=True, blank=True)
+
+    temporal_coverage_from = models.DateTimeField(null=True, blank=True)
+    temporal_coverage_to = models.DateTimeField(null=True, blank=True)
+
+    published = models.BooleanField(default=False)
+
+    publisher = models.ForeignKey(Publisher, related_name='datasets')
 
     def __unicode__(self):
         return self.title
@@ -22,31 +30,20 @@ class Dataset(models.Model):
 "license_title": "UK Open Government Licence (OGL)",
 "maintainer": null,
 "author": "Transport Direct",
-"temporal_coverage-from": "1/4/2011",
-"date_updated": "7/10/2014",
+"author_email": "",
 
-        "private": false,
-        "maintainer_email": null,
-        "revision_timestamp": "2012-05-01T15:02:59.655277",
+"maintainer_email": null,
 
-        "foi-email": "",
-        "id": "ff93ffc1-6656-47d8-9155-85ea0b8f2251",
-        "metadata_created": "2010-03-19T17:59:21.036794",
-        "metadata_modified": "2014-10-07T14:19:20.085874",
-        "temporal_granularity": "day",
-        "author_email": " naptandatamanager@landmark.co.uk",
-        "geographic_coverage": [
-            "england",
-            "scotland",
-            "wales"
-        ],
-        "state": "active",
-        "version": null,
-        "core-dataset": "true",
-        "temporal_coverage-to": "7/10/2014",
-        "license_id": "uk-ogl",
-        "foi-web": "",
-        "unpublished": "false",
+"foi-email": "",
+    "temporal_granularity": "day",
+    "geographic_coverage": [
+        "england",
+        "scotland",
+        "wales"
+    ],
+"license_id": "uk-ogl",
+"foi-web": "",
+"unpublished": "false",
         "resources": [
             {
                 "mimetype": "text/html",

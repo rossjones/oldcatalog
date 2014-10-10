@@ -7,11 +7,12 @@
 
 <div class="row-fluid">
 
-<h1>{{ publisher.title }}</h1>
+<h1>{{ dataset.title }}</h1>
 
-{% for dataset in publisher.datasets.all %}
+<p>dataset.description</p>
+{% for resource in dataset.resources.all %}
 
-    <h3><a href="{% url 'dataset_show' publisher_slug=publisher.slug slug=dataset.slug %}">{{ dataset.title }}</a></h3>
+    <h3><a href="">{{ resource.title }}</a></h3>
     <p>{{ dataset.description}}</p>
 
 {% endfor %}

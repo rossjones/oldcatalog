@@ -1,5 +1,5 @@
 
 <li class="search-result publisher-search-result">
-    <h2>{{ result.object.title }}</h2>
+    <h2><a href="{% url 'publisher_show' slug=result.object.slug%}">{{ result.object.title }}</a></h2>
     <p>{{ result.object.description }}</p>
 </li>
