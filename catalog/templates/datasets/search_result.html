@@ -2,4 +2,5 @@
 <li class="search-result dataset-search-result">
     <h2>{{ result.object.title }}</h2>
     <p>{{ result.object.description }}</p>
+    <p>Published by <a href="{% url 'publisher_show' slug=result.object.publisher.slug %}">{{result.object.publisher.title}}</a></p>
 </li>

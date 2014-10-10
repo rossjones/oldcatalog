@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^data/', 'catalog.views.datasets.list', name='dataset_list'),
 
 
+    url(r'^(?P<slug>[\w-]+)$', 'catalog.views.publishers.show', name='publisher_show'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

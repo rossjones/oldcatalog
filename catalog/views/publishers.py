@@ -13,6 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 from haystack.query import SearchQuerySet
 
 from catalog.search_forms import PublisherSearchForm
+from catalog.models import Publisher
+
 
 def list(request):
     form = PublisherSearchForm(request.GET or None)
@@ -38,5 +40,13 @@ def list(request):
         },
         context_instance=RequestContext(request))
 
+
 def show(request, slug):
-    pass
+
+    publisher = get_object_or_404(Publisher, slug=slug)
+
+    return render_to_response('publishers/show.html',
+        {
+            'publisher': publisher,
+        },
+        context_instance=RequestContext(request))
