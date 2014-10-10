@@ -9,8 +9,7 @@ from .publisher import Publisher
 class Dataset(models.Model):
 
     title = models.CharField(max_length=200)
-    slug = AutoSlugField(populate_from='title',
-        unique_with=['publisher__slug'],)
+    slug = AutoSlugField(populate_from='title')
     description = models.TextField()
 
     created_date = models.DateTimeField(auto_now_add=True, blank=True)

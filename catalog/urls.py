@@ -12,6 +12,7 @@ router = routers.DefaultRouter()
 router.register(r'datasets', api_views.DatasetViewSet)
 router.register(r'publishers', api_views.PublisherViewSet)
 router.register(r'resources', api_views.ResourceViewSet)
+#router.register(r'users', api_views.UserViewSet)
 
 urlpatterns = patterns('',
     # Examples:
