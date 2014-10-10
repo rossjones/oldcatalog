@@ -1,0 +1,50 @@
+{% extends "catalog/base.html" %}
+
+{% block extra_head %}
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="row-fluid">
+
+
+<form action="." method="GET">
+    {{ form }}
+    <button class="btn btn-primary">Search</button>
+</form>
+
+
+{% if total == 0 %}
+    <h3>No publishers found</h3>
+{% else %}
+    <h2>Found {{ total }} publishers </h2>
+
+    <ul class="search-results">
+        {% for result in publishers %}
+
+            {% include "publishers/search_result.html" %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if publishers.has_previous %}
+            <a href="?page={{ publishers.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ publishers.number }} of {{ publishers.paginator.num_pages }}.
+        </span>
+
+        {% if publishers.has_next %}
+            <a href="?page={{ publishers.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,4 @@
+whoosh_index
+*.pyc
+db.sqlite3
+
