@@ -39,17 +39,13 @@ def list(request):
         },
         context_instance=RequestContext(request))
 
-def show(request, publisher_slug, slug):
+def show(request, slug):
 
-    publisher = get_object_or_404(Publisher, slug=publisher_slug)
-    try:
-        dataset = Dataset.objects.get(slug=slug, publisher=publisher)
-    except Dataset.DoesNotExist:
-        raise HttpResponseNotFound()
+    dataset = get_object_or_404(Dataset, slug=slug)
 
     return render_to_response('datasets/show.html',
         {
-            'publisher': publisher,
+            'publisher': dataset.publisher,
             'dataset': dataset
         },
         context_instance=RequestContext(request))

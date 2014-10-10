@@ -11,7 +11,7 @@
 
 {% for dataset in publisher.datasets.all %}
 
-    <h3><a href="{% url 'dataset_show' publisher_slug=publisher.slug slug=dataset.slug %}">{{ dataset.title }}</a></h3>
+    <h3><a href="{% url 'dataset_show' slug=dataset.slug %}">{{ dataset.title }}</a></h3>
     <p>{{ dataset.description}}</p>
 
 {% endfor %}

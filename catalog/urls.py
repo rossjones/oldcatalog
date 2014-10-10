@@ -10,13 +10,13 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'catalog.views.app_views.home', name='home'),
 
-    url(r'^publisher/', 'catalog.views.publishers.list', name='publisher_list'),
-    url(r'^data/', 'catalog.views.datasets.list', name='dataset_list'),
 
-
-    url(r'^(?P<slug>[\w-]+)$', 'catalog.views.publishers.show', name='publisher_show'),
-    url(r'^(?P<publisher_slug>[\w-]+)/(?P<slug>[\w-]+)$',
+    url(r'^publisher/(?P<slug>[\w-]+)$', 'catalog.views.publishers.show', name='publisher_show'),
+    url(r'^dataset/(?P<slug>[\w-]+)$',
             'catalog.views.datasets.show', name='dataset_show'),
+
+    url(r'^publisher/$', 'catalog.views.publishers.list', name='publisher_list'),
+    url(r'^data/$', 'catalog.views.datasets.list', name='dataset_list'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

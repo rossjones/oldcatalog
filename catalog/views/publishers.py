@@ -17,6 +17,7 @@ from catalog.models import Publisher
 
 
 def list(request):
+
     form = PublisherSearchForm(request.GET or None)
 
     search_results = form.search()
